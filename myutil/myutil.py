@@ -1,5 +1,7 @@
 # Some user defined functions
 
+import os, shutil
+
 import numpy as np
 
 # Quaternion multiplication
@@ -81,3 +83,8 @@ def tfmult(T1, T2):
     R = np.dot(R1, R2)
     t = np.dot(R1, t2) + t1
     return Rt2Tf(R, t)
+
+def resetdir(dir):
+    if os.path.exists(dir):
+        shutil.rmtree(dir)
+    os.makedirs(dir, exist_ok=False)
